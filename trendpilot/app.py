@@ -2,16 +2,21 @@ import streamlit as st
 import pandas as pd
 import re
 from collections import Counter
+from pathlib import Path
+
 st.set_page_config(
     page_title="TrendPilot",
     page_icon="🚀",
     layout="wide"
 )
+
 st.title("TrendPilot")
 st.write("Check whether your YouTube video idea matches current trends.")
 
 
-df = pd.read_csv("youtube_trending.csv") #read data
+BASE_DIR = Path(__file__).parent
+csv_path = BASE_DIR / "youtube_trending.csv"
+df = pd.read_csv(csv_path)  # read data
 category_map = {
     1: "Film & Animation",
     2: "Autos & Vehicles",
